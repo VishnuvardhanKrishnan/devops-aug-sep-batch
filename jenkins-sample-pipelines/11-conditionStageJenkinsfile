@@ -4,9 +4,9 @@ pipeline {
         git_push = true
     }
     stages {
-        cleanWs()
         stage('Git Clone') {
             steps {
+                cleanWs()
                 git credentialsId: 'github-ssh-key', url: "git@github.com:VishnuvardhanKrishnan/devops-aug-sep-batch.git", branch: 'main'
                 sshagent(credentials: ['github-ssh-key']) {
                     sh """
@@ -19,7 +19,6 @@ pipeline {
         stage('Git Push') {
             when { expression { return git_push } }
             steps {
-                git credentialsId: 'github-ssh-key', url: "git@github.com:VishnuvardhanKrishnan/devops-aug-sep-batch.git", branch: 'main'
                 sshagent(credentials: ['github-ssh-key']) {
                     sh """
                         touch gitpush.txt
