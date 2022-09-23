@@ -5,7 +5,6 @@
     http_port: 80
     max_clients: 200
     document_root: /var/www/html
-  remote_user: root
   tasks:
     - name: Ensure apache is at the latest version
       ansible.builtin.yum:
