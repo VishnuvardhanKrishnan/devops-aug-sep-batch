@@ -1,3 +1,4 @@
+
 ---
 - name: Verify apache installation
   hosts: all
@@ -5,6 +6,7 @@
     http_port: 80
     max_clients: 200
     document_root: /var/www/html
+  remote_user: root
   tasks:
     - name: Ensure apache is at the latest version
       ansible.builtin.yum:
@@ -14,7 +16,7 @@
     - name: Write the apache config file
       ansible.builtin.template:
         src: index.html
-        dest: {{ document_root }}/index.html owner=apache group=apache mode=0644
+        dest: "{{ document_root }}"
       notify:
       - Restart apache
 
@@ -28,5 +30,3 @@
       ansible.builtin.service:
         name: httpd
         state: restarted
-        
-        
