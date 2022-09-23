@@ -4,7 +4,7 @@ Install Ansible on Amazon Linux / CentOS
 # sudo yum install ansible
 
 ## Edit the file /etc/ansible/ansible.cfg and the below entry:
-# host_key_checking = False
+host_key_checking = False
 
 Adhoc command:
 ===============
