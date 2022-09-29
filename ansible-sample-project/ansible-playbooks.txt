@@ -11,6 +11,9 @@ Adhoc command:
 Access System Information (Facts) in Ansible Playbooks:
   ansible all -m setup -u osboxes
 
+Whether we can connect the target Ansible machines:
+  ansible all -m ping -u osboxes
+
 Playbook details and execution:
 ===============================
 01 - Define Tasks in Ansible Playbooks
